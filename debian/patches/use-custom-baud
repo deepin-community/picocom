@@ -1,0 +1,18 @@
+Description: support custom baudrate on architectures with c_ispeed/c_ospeed
+Author: Martin <debacle@debian.org>
+Origin: vendor
+Last-Update: 2023-02-26
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/custbaud.h
++++ b/custbaud.h
+@@ -33,7 +33,8 @@
+ /* Enable by-default for kernels > 2.6.0 on x86 and x86_64 only */
+ #include <linux/version.h>
+ #if LINUX_VERSION_CODE > KERNEL_VERSION(2,6,0)
+-#if defined (__i386__) || defined (__x86_64__) || defined (USE_CUSTOM_BAUD)
++#include <termios.h>
++#if defined (_HAVE_STRUCT_TERMIOS_C_ISPEED) && defined (_HAVE_STRUCT_TERMIOS_C_OSPEED) && _HAVE_STRUCT_TERMIOS_C_ISPEED && _HAVE_STRUCT_TERMIOS_C_OSPEED
+ #ifndef USE_CUSTOM_BAUD
+ #define USE_CUSTOM_BAUD
+ #endif

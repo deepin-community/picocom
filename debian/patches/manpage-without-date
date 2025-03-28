@@ -1,0 +1,17 @@
+Description: remove date from manpage for reproducible build
+Author: W. Martin Borgert <debacle@debian.org>
+Origin: vendor
+Last-Update: 2017-05-24
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/Makefile
++++ b/Makefile
+@@ -69,7 +69,7 @@
+ picocom.1 : picocom.1.md
+ 	sed 's/\*\*\[/\*\*/g;s/\]\*\*/\*\*/g' $? \
+ 	| pandoc -s -t man \
+-	    -Vfooter="Picocom $(VERSION)" -Vdate="`date -I`" \
++	    -Vfooter="Picocom $(VERSION)" \
+ 	    -Vadjusting='l' \
+ 	    -Vhyphenate='' \
+ 	    -o $@

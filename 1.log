@@ -1,0 +1,93 @@
+dpkg-buildpackage: info: source package picocom
+dpkg-buildpackage: info: source version 3.1-4
+dpkg-buildpackage: info: source distribution unstable
+dpkg-buildpackage: info: source changed by Martin <debacle@debian.org>
+ dpkg-source --before-build .
+dpkg-buildpackage: info: host architecture amd64
+dpkg-source: info: using patch list from debian/patches/series
+dpkg-source: info: applying use-custom-baud
+dpkg-source: info: applying manpage-without-date
+ debian/rules clean
+dh clean
+   dh_auto_clean
+	make -j16 distclean
+make[1]: 进入目录“/home/xzl/work/picocom/picocom”
+rm -f picocom.o term.o fdio.o split.o
+rm -f linenoise-1.0/linenoise.o
+rm -f termios2.o custbaud_bsd.o
+rm -f *~
+rm -f \#*\#
+rm -f picocom
+make[1]: 离开目录“/home/xzl/work/picocom/picocom”
+   dh_clean
+ debian/rules binary
+dh binary
+   dh_update_autotools_config
+   dh_autoreconf
+   dh_auto_configure
+   debian/rules override_dh_auto_build
+make[1]: 进入目录“/home/xzl/work/picocom/picocom”
+/usr/bin/make picocom.1
+make[2]: 进入目录“/home/xzl/work/picocom/picocom”
+sed 's/\*\*\[/\*\*/g;s/\]\*\*/\*\*/g' picocom.1.md \
+| pandoc -s -t man \
+    -Vfooter="Picocom 3.1" \
+    -Vadjusting='l' \
+    -Vhyphenate='' \
+    -o picocom.1
+make[2]: 离开目录“/home/xzl/work/picocom/picocom”
+dh_auto_build
+	make -j16 "INSTALL=install --strip-program=true"
+make[2]: 进入目录“/home/xzl/work/picocom/picocom”
+cc -g -O2 -ffile-prefix-map=/home/xzl/work/picocom/picocom=. -fstack-protector-strong -fstack-clash-protection -Wformat -Werror=format-security -fcf-protection -Wall -g -Wdate-time -D_FORTIFY_SOURCE=2 -DVERSION_STR=\"3.1\" -DTTY_Q_SZ=0 -DHIGH_BAUD -DUSE_FLOCK -DHISTFILE=\".picocom_history\" -DLINENOISE -o linenoise-1.0/linenoise.o -c linenoise-1.0/linenoise.c
+cc -g -O2 -ffile-prefix-map=/home/xzl/work/picocom/picocom=. -fstack-protector-strong -fstack-clash-protection -Wformat -Werror=format-security -fcf-protection -Wall -g -Wdate-time -D_FORTIFY_SOURCE=2 -DVERSION_STR=\"3.1\" -DTTY_Q_SZ=0 -DHIGH_BAUD -DUSE_FLOCK -DHISTFILE=\".picocom_history\" -DLINENOISE -o picocom.o -c picocom.c
+cc -g -O2 -ffile-prefix-map=/home/xzl/work/picocom/picocom=. -fstack-protector-strong -fstack-clash-protection -Wformat -Werror=format-security -fcf-protection -Wall -g -Wdate-time -D_FORTIFY_SOURCE=2 -DVERSION_STR=\"3.1\" -DTTY_Q_SZ=0 -DHIGH_BAUD -DUSE_FLOCK -DHISTFILE=\".picocom_history\" -DLINENOISE -o term.o -c term.c
+cc -g -O2 -ffile-prefix-map=/home/xzl/work/picocom/picocom=. -fstack-protector-strong -fstack-clash-protection -Wformat -Werror=format-security -fcf-protection -Wall -g -Wdate-time -D_FORTIFY_SOURCE=2 -DVERSION_STR=\"3.1\" -DTTY_Q_SZ=0 -DHIGH_BAUD -DUSE_FLOCK -DHISTFILE=\".picocom_history\" -DLINENOISE -o fdio.o -c fdio.c
+cc -g -O2 -ffile-prefix-map=/home/xzl/work/picocom/picocom=. -fstack-protector-strong -fstack-clash-protection -Wformat -Werror=format-security -fcf-protection -Wall -g -Wdate-time -D_FORTIFY_SOURCE=2 -DVERSION_STR=\"3.1\" -DTTY_Q_SZ=0 -DHIGH_BAUD -DUSE_FLOCK -DHISTFILE=\".picocom_history\" -DLINENOISE -o split.o -c split.c
+cc -g -O2 -ffile-prefix-map=/home/xzl/work/picocom/picocom=. -fstack-protector-strong -fstack-clash-protection -Wformat -Werror=format-security -fcf-protection -Wall -g -Wdate-time -D_FORTIFY_SOURCE=2 -DVERSION_STR=\"3.1\" -DTTY_Q_SZ=0 -DHIGH_BAUD -DUSE_FLOCK -DHISTFILE=\".picocom_history\" -DLINENOISE -o termios2.o -c termios2.c
+cc -g -O2 -ffile-prefix-map=/home/xzl/work/picocom/picocom=. -fstack-protector-strong -fstack-clash-protection -Wformat -Werror=format-security -fcf-protection -Wall -g -Wdate-time -D_FORTIFY_SOURCE=2 -DVERSION_STR=\"3.1\" -DTTY_Q_SZ=0 -DHIGH_BAUD -DUSE_FLOCK -DHISTFILE=\".picocom_history\" -DLINENOISE -o custbaud_bsd.o -c custbaud_bsd.c
+In function ‘add_history’,
+    inlined from ‘read_baud’ at picocom.c:608:9:
+picocom.c:568:5: warning: pointer ‘baudstr’ may be used after ‘free’ [-Wuse-after-free]
+  568 |     linenoiseHistoryAdd(fname);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+picocom.c: In function ‘read_baud’:
+picocom.c:604:9: note: call to ‘free’ here
+  604 |         free(baudstr);
+      |         ^~~~~~~~~~~~~
+cc -Wl,-z,relro -o picocom linenoise-1.0/linenoise.o picocom.o term.o fdio.o split.o termios2.o custbaud_bsd.o 
+make[2]: 离开目录“/home/xzl/work/picocom/picocom”
+make[1]: 离开目录“/home/xzl/work/picocom/picocom”
+   dh_auto_test
+   create-stamp debian/debhelper-build-stamp
+   dh_prep
+   dh_installdirs
+   dh_auto_install --destdir=debian/picocom/
+   dh_install
+   dh_installdocs
+   dh_installchangelogs
+   dh_installexamples
+   dh_installman
+   dh_perl
+   dh_link
+   dh_strip_nondeterminism
+   dh_compress
+   dh_fixperms
+   dh_missing
+   dh_dwz -a
+   dh_strip -a
+   dh_makeshlibs -a
+   dh_shlibdeps -a
+   dh_installdeb
+   dh_gencontrol
+   dh_md5sums
+   dh_builddeb
+dpkg-deb: 正在 '../picocom_3.1-4_amd64.deb' 中构建软件包 'picocom'。
+dpkg-deb: 正在 '../picocom-dbgsym_3.1-4_amd64.deb' 中构建软件包 'picocom-dbgsym'。
+ dpkg-genbuildinfo --build=binary -O../picocom_3.1-4_amd64.buildinfo
+ dpkg-genchanges --build=binary -O../picocom_3.1-4_amd64.changes
+dpkg-genchanges: info: binary-only upload (no source code included)
+ dpkg-source --after-build .
+dpkg-source: info: unapplying manpage-without-date
+dpkg-source: info: unapplying use-custom-baud
+dpkg-buildpackage: info: binary-only upload (no source included)
