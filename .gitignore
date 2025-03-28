@@ -1,0 +1,4 @@
+*.o
+*~
+/picocom
+picocom.1
