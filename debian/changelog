@@ -1,5 +1,106 @@
-template-repository (1.0-1) unstable; urgency=medium
+picocom (2024-07-0deepin1) unstable; urgency=medium
 
-  * Initial release
+  *Use new uptream version.
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+ -- xiangzelong <xiangzelong@deepin.org>  Fri, 28 Mar 2025 10:31:28 +0800
+
+picocom (3.1-4) unstable; urgency=medium
+
+  * Fix use-custom-baud patch, thanks Adrian Bunk <bunk@debian.org>
+    (Closes: #1032038)
+
+ -- Martin <debacle@debian.org>  Sun, 26 Feb 2023 22:35:07 +0000
+
+picocom (3.1-3) unstable; urgency=medium
+
+  * Add debian/watch
+
+  [ Ondřej Nový ]
+  * d/copyright: Use https protocol in Format field
+  * d/changelog: Remove trailing whitespaces
+
+  [ Debian Janitor ]
+  * Bump debhelper from old 11 to 13.
+  * Set debhelper-compat version in Build-Depends.
+  * Set upstream metadata fields: Bug-Database, Bug-Submit, Repository-Browse.
+
+ -- Martin <debacle@debian.org>  Sun, 26 Feb 2023 11:40:32 +0000
+
+picocom (3.1-2) unstable; urgency=medium
+
+  * Try to fix build on architectures without termios c_ispeed/c_ospeed
+
+ -- W. Martin Borgert <debacle@debian.org>  Wed, 21 Mar 2018 21:54:53 +0000
+
+picocom (3.1-1) unstable; urgency=medium
+
+  * New upstream version (Closes: #881926)
+  * Support custom baudrate on all architectures
+  * Use salsa.debian.org as packaging repo
+  * Use new debhelper 11
+  * Update Standards-Version to 4.1.3; no changes required
+
+ -- W. Martin Borgert <debacle@debian.org>  Tue, 20 Mar 2018 23:28:32 +0000
+
+picocom (2.2-2) unstable; urgency=medium
+
+  * Upload to unstable
+
+ -- W. Martin Borgert <debacle@debian.org>  Sat, 17 Jun 2017 00:15:28 +0000
+
+picocom (2.2-1) experimental; urgency=medium
+
+  * New upstream version (Closes: #840671, #852754)
+  * New version supports setting stop bits (Closes: #837046)
+  * Use new debhelper 10
+  * Fixed homepage and download URL (Closes: #752098)
+  * Use machine-readable copyright format
+  * Add myself to uploaders
+  * Use collab-maint Git for packaging
+  * Update Standards-Version to 3.9.8; no changes required
+  * Build manual page from source (Closes: #430975)
+
+ -- W. Martin Borgert <debacle@debian.org>  Wed, 24 May 2017 00:35:45 +0000
+
+picocom (1.7-1) unstable; urgency=low
+
+  * New upstream release.  Closes: #659590.
+  * Switch to dpkg-source 3.0 (quilt) format.
+  * Bump debhelper compat to 8, switch to minimal dh-based debian/rules.
+  * Update Homepage: field.
+  * Update Standards-Version to 3.9.3; no changes required.
+
+ -- Matt Palmer <mpalmer@debian.org>  Sat, 21 Apr 2012 18:48:46 +1000
+
+picocom (1.4-3) unstable; urgency=low
+
+  * Adopted.  Closes: #452192.
+  * Dump the debian-native packaging.
+  * Fix odd parity problems.  Closes: #492695.  Thanks to Freddy Spierenburg
+    for the patch.
+
+ -- Matt Palmer <mpalmer@debian.org>  Sun, 03 Aug 2008 22:52:39 +1000
+
+picocom (1.4-2) unstable; urgency=low
+
+  * QA upload.
+  * Set Maintainer to QA Group. The previous Maintainer email is bouncing.
+
+ -- Lucas Nussbaum <lucas@lucas-nussbaum.net>  Thu, 10 Jan 2008 09:04:17 +0100
+
+picocom (1.4-1) unstable; urgency=low
+
+  * new upstream version:
+    - Changed the behavior of the C-a command. Now pressing C-a
+	 twice sends C-a to the serial port
+    - Added the C-\ command that generates a break sequence
+    - Added (optional) UUCP-lockfiles support
+
+ -- Oliver Kurth <oku@debian.org>  Tue, 14 Sep 2004 11:25:07 -0700
+
+picocom (1.3-1) unstable; urgency=low
+
+  * Initial Release (closes: #236044)
+  * upstream included my man page
+
+ -- Oliver Kurth <oku@debian.org>  Sun, 07 Mar 2004 19:43:34 -0800
